@@ -571,3 +571,7 @@ npm run lint
 - [TypeORM Documentation](https://typeorm.io)
 - [Redis Documentation](https://redis.io/docs)
 - [Docker Documentation](https://docs.docker.com)
+
+## Disclaimer
+
+Build by Fordyce Gozali (forddyce92@gmail.com) for demonstrations purposes.
