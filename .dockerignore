@@ -1,0 +1,12 @@
+_.md
+!README.md
+.git
+.gitignore
+.env
+.env.example
+node_modules
+dist
+coverage
+.vscode
+.idea
+_.log
