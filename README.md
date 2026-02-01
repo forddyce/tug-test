@@ -2,25 +2,6 @@
 
 A production-ready NestJS backend application for managing fuel purchase transactions for fleet cards with real-time validation, caching, and comprehensive testing.
 
-## 📋 Table of Contents
-
-- [Features](#features)
-- [Architecture](#architecture)
-- [Technology Stack](#technology-stack)
-- [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-    - [Environment Variables](#environment-variables)
-- [Running the Application](#running-the-application)
-    - [Local Development](#local-development)
-    - [Docker](#docker)
-- [API Documentation](#api-documentation)
-- [Testing](#testing)
-- [CI/CD](#cicd)
-- [Database Schema](#database-schema)
-- [Performance Optimizations](#performance-optimizations)
-- [Contributing](#contributing)
-
 ---
 
 ## ✨ Features
@@ -578,6 +559,7 @@ npm run lint
 
 ### Project Documentation
 
+- **[Entity-Relationship Diagram (ERD)](docs/ERD.md)** - Database schema and relationships
 - **[Assumptions & Design Decisions](docs/ASSUMPTIONS.md)** - Architecture rationale and trade-offs
 - **[CI/CD Overview](docs/CI_CD.md)** - Full setup guide
 - **[CI/CD Quick Reference](docs/CI_CD_QUICK_REF.md)** - Commands and tips
