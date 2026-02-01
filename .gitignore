@@ -39,6 +39,5 @@ lerna-debug.log*
 .env.local
 .env.*.local
 
-package-lock.json
 dev_checklist.md
 notes.md
