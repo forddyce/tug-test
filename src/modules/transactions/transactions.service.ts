@@ -37,7 +37,6 @@ export class TransactionsService {
     async processWebhook(
         dto: CreateTransactionDto,
     ): Promise<TransactionResponseDto> {
-        // Check for idempotency key
         if (dto.idempotencyKey) {
             const existingKey = await this.checkIdempotencyKey(
                 dto.idempotencyKey,
@@ -139,7 +138,6 @@ export class TransactionsService {
                 message: 'Transaction approved successfully',
             };
 
-            // Store idempotency key if provided
             if (dto.idempotencyKey) {
                 await this.storeIdempotencyKey(
                     dto.idempotencyKey,
@@ -199,7 +197,6 @@ export class TransactionsService {
             return null;
         }
 
-        // Check if key has expired (24 hours)
         if (idempotencyKey.expiresAt < new Date()) {
             await this.idempotencyRepository.remove(idempotencyKey);
             return null;
@@ -216,7 +213,7 @@ export class TransactionsService {
     ): Promise<void> {
         try {
             const expiresAt = new Date();
-            expiresAt.setHours(expiresAt.getHours() + 24); // 24-hour expiry
+            expiresAt.setHours(expiresAt.getHours() + 24);
 
             const idempotencyKey = this.idempotencyRepository.create({
                 key,
@@ -228,7 +225,6 @@ export class TransactionsService {
 
             await this.idempotencyRepository.save(idempotencyKey);
         } catch (error) {
-            // If duplicate key (race condition), ignore the error
             if (error.code !== '23505') {
                 throw error;
             }

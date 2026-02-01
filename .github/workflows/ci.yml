@@ -121,10 +121,15 @@ jobs:
               run: npm run test:e2e
               env:
                   NODE_ENV: test
+                  DATABASE_HOST: localhost
                   DB_HOST: localhost
+                  DATABASE_PORT: 5432
                   DB_PORT: 5432
+                  DATABASE_USER: tug_user
                   DB_USERNAME: tug_user
+                  DATABASE_PASSWORD: tug_password
                   DB_PASSWORD: tug_password
+                  DATABASE_NAME: tug_test
                   DB_NAME: tug_test
                   REDIS_HOST: localhost
                   REDIS_PORT: 6379
