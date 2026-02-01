@@ -574,12 +574,6 @@ npm run lint
 
 ---
 
-## 📄 License
-
-This project is [MIT licensed](LICENSE).
-
----
-
 ## 🔗 Additional Resources
 
 ### Project Documentation
