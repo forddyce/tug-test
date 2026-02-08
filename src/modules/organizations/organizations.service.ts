@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Organization } from './entities/organization.entity';
+import { Card } from '../cards/entities/card.entity';
 import { OrganizationNotFoundException } from '../../common/exceptions/organization-not-found.exception';
 
 @Injectable()
@@ -11,9 +12,17 @@ export class OrganizationsService {
         private readonly organizationRepository: Repository<Organization>,
     ) {}
 
+    async findAll(): Promise<Organization[]> {
+        return this.organizationRepository.find({
+            relations: ['cards'],
+            order: { createdAt: 'DESC' },
+        });
+    }
+
     async findById(id: string): Promise<Organization> {
         const organization = await this.organizationRepository.findOne({
             where: { id },
+            relations: ['cards'],
         });
 
         if (!organization) {
@@ -21,6 +30,11 @@ export class OrganizationsService {
         }
 
         return organization;
+    }
+
+    async getOrganizationCards(id: string): Promise<Card[]> {
+        const organization = await this.findById(id);
+        return organization.cards || [];
     }
 
     async updateBalance(id: string, newBalance: number): Promise<Organization> {

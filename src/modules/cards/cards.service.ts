@@ -11,6 +11,15 @@ export class CardsService {
         private readonly cardRepository: Repository<Card>,
     ) {}
 
+    async findAll(organizationId?: string): Promise<Card[]> {
+        const whereCondition = organizationId ? { organizationId } : {};
+        return this.cardRepository.find({
+            where: whereCondition,
+            relations: ['organization'],
+            order: { createdAt: 'DESC' },
+        });
+    }
+
     async findByCardNumber(cardNumber: string): Promise<Card> {
         const card = await this.cardRepository.findOne({
             where: { cardNumber },
