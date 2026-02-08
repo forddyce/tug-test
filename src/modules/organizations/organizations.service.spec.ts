@@ -52,6 +52,7 @@ describe('OrganizationsService', () => {
             expect(result).toEqual(mockOrganization);
             expect(repository.findOne).toHaveBeenCalledWith({
                 where: { id: 'org-uuid' },
+                relations: ['cards'],
             });
         });
 
